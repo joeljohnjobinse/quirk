@@ -30,7 +30,7 @@ end`)
   const runCode = async () => {
     setLoading(true)
 
-    const res = await axios.post("http://localhost:5000/run", { code })
+    const res = await axios.post("/run", { code })
 
     if (res.data.error) {
       setOutput(res.data.message)
