@@ -1,0 +1,13 @@
+setup.py
+sillylang/__init__.py
+sillylang/ast_interpreter.py
+sillylang/ast_nodes.py
+sillylang/cli.py
+sillylang/compiler.py
+sillylang/lexer.py
+sillylang/parser.py
+sillylang.egg-info/PKG-INFO
+sillylang.egg-info/SOURCES.txt
+sillylang.egg-info/dependency_links.txt
+sillylang.egg-info/entry_points.txt
+sillylang.egg-info/top_level.txt
