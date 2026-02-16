@@ -29,7 +29,7 @@ app.post("/run", (req, res) => {
   }
 
   exec(
-    `python -m quirk.cli temp.qk`,
+    `python -m quirk.cli run temp.qk`,
     { timeout: 5000, cwd: projectRoot },
     (err, stdout, stderr) => {
 
