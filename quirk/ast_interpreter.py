@@ -202,6 +202,28 @@ class Interpreter:
         if isinstance(node, Boolean):
             return node.value
 
+        if isinstance(node, Attribute):
+            obj = self.evaluate(node.object)
+
+            if isinstance(obj, dict):
+                if node.name in obj:
+                    return obj[node.name]
+
+            raise RuntimeError(
+                f"Attribute '{node.name}' not found",
+                node.line
+            )
+
+
+            if isinstance(obj, dict):
+                if node.name in obj:
+                    return obj[node.name]
+
+            raise RuntimeError(
+                f"Attribute '{node.name}' not found",
+                node.line
+            )
+
         if isinstance(node, Variable):
             try:
                 return self.scopes.get(node.name)

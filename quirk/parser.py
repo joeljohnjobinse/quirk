@@ -356,18 +356,29 @@ class Parser:
         tok = self.eat("IDENT")
         node = Variable(tok.value, tok.line)
 
-        if self.current() and self.current().type == "LPAREN":
-            self.eat("LPAREN")
-            args = []
-            if self.current() and self.current().type != "RPAREN":
-                args.append(self.expression())
-                while self.current() and self.current().type == "COMMA":
-                    self.eat("COMMA")
+        while self.current():
+            if self.current().type == "LPAREN":
+                self.eat("LPAREN")
+                args = []
+                if self.current() and self.current().type != "RPAREN":
                     args.append(self.expression())
-            self.eat("RPAREN")
-            return Call(node, args, tok.line)
+                    while self.current() and self.current().type == "COMMA":
+                        self.eat("COMMA")
+                        args.append(self.expression())
+                self.eat("RPAREN")
+                node = Call(node, args, tok.line)
+
+            elif self.current().type == "DOT":
+                self.eat("DOT")
+                attr = self.eat("IDENT")
+                node = Attribute(node, attr.value, attr.line)
+
+            else:
+                break
 
         return node
+
+
 
     def group_or_tuple(self):
         start = self.eat("LPAREN")

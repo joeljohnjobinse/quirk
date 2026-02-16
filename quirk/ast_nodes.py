@@ -207,3 +207,9 @@ class TuplePattern(Node):
     def __init__(self, elements, line):
         super().__init__(line)
         self.elements = elements
+
+class Attribute:
+    def __init__(self, object_, name, line):
+        self.object = object_
+        self.name = name
+        self.line = line

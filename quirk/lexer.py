@@ -120,6 +120,9 @@ def tokenize(code):
         elif kind == "FLOAT":
             tokens.append(Token("FLOAT", value, line))
 
+        elif kind == "DOT":
+            tokens.append(Token("DOT", ".", line))
+
         else:
             tokens.append(Token(kind, value, line))
 
