@@ -1,7 +1,0 @@
-x = 3
-
-for i from 0 to x
-    print i
-end
-
-print x
