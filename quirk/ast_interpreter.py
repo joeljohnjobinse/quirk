@@ -383,8 +383,6 @@ class Interpreter:
             code = f.read()
 
         tokens = tokenize(code)
-        for t in tokens:
-            print(t.type, t.value)
         ast = Parser(tokens).parse()
 
         module_interpreter = Interpreter()
